@@ -21,26 +21,26 @@ const mockProposals = [
 
 function HOME() {
 
-  const { library, account,activate } = useWeb3React();
+  const { library, account, activate } = useWeb3React();
   const [proposalName, setProposalName] = useState("");
   const [proposalList, setProposalList] = useState(mockProposals);
   const [contract, setContract] = useState(null);
 
   // function to get contract instance 
-const  getContract = useCallback(async ()=>{
+  const getContract = useCallback(async () => {
 
-    try{
+    try {
       //change the contract address
       const contract = makeContract(library, Contract, "0x5FbDB2315678afecb367f032d93F642f64180aa3");
       setContract(contract);
       //can use the contract state variable to call the contract functions
       console.log("contract", contract);
     }
-    catch(e){
+    catch (e) {
       console.log(e);
     }
-  
-},[library])
+
+  }, [library])
   const handleProposalSubmission = (e) => {
     console.log("PROPOSAL SUBMIT");
   };
@@ -64,23 +64,23 @@ const  getContract = useCallback(async ()=>{
   };
 
   useEffect(() => {
-    if(!library) return;
+    if (!library) return;
     console.log("proposal name", proposalName);
     // call the contract 
     getContract();
-  }, [proposalName,library,getContract]);
+  }, [proposalName, library, getContract]);
 
   //reconnect metaMask after refresh
-  useEffect(()=>{
+  useEffect(() => {
     const auth = localStorage.getItem("wallet-auth");
-    if(auth === "MetaMask"){
+    if (auth === "MetaMask") {
       activate(injected);
-      console.log({account})
+      console.log({ account })
     }
-  },[activate])
+  }, [activate])
 
   return (
-    <Container>
+    <Container className="homeContainer">
       <Card>
         <Row>
           <Col md={4} xs={4} className="start">

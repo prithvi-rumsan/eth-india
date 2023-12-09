@@ -1,13 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-import "./connect-wallet.css";
 import Card from "../../components/card";
 import { injected } from "../../utils/wallet";
 import { useWeb3React } from "@web3-react/core";
+import "./connect-wallet.css";
 
 function ConnectWallet() {
-  const { activate,deactivate } = useWeb3React();
+  const { activate, deactivate } = useWeb3React();
 
 
   const connectMetaMask = async () => {
@@ -29,13 +29,13 @@ function ConnectWallet() {
     }
   }
 
-  const disconnectWallet = async () => {  
-    try{
+  const disconnectWallet = async () => {
+    try {
       deactivate();
       localStorage.removeItem("wallet-auth");
 
     }
-    catch(e){
+    catch (e) {
       console.log(e);
     }
   }
@@ -46,17 +46,20 @@ function ConnectWallet() {
 
   return (
     <Container className="full-center">
-      <Card>
-        <div className="title-container">
-          Connect To Metamask
-          <div className="image-container">
-            <Image src="/metamask.png" fluid />
+      <div className="card-container">
+        <Card>
+          <div className="title-container">
+            Connect To Metamask
+            <div className="image-container">
+              <Image src="/metamask.png" fluid />
+            </div>
           </div>
-        </div>
-        <br />
-        <Button onClick ={connectMetaMask}>  Connect</Button>
-        <Button onClick ={disconnectWallet}>Disconnect</Button>
-      </Card>
+          <br />
+          <br />
+          <Button onClick={connectMetaMask}>  Connect</Button>
+          <Button onClick={disconnectWallet}>Disconnect</Button>
+        </Card >
+      </div>
     </Container>
   );
 }
