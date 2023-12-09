@@ -4,11 +4,12 @@ import ConnectWallet from "./modules/connect-wallet";
 
 function App() {
   return (
+
     <BrowserRouter>
       <Routes>
-        <Route path="/connect-wallet" element={<ConnectWallet />}></Route>
+        <Route path="/" element={<ConnectWallet />}></Route>
 
-        <Route path="/" element={<HOME />}></Route>
+        <Route path="/dashboard" element={<HOME />}></Route>
       </Routes>
     </BrowserRouter>
   );
