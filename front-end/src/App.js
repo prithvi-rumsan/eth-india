@@ -1,8 +1,16 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HOME from "./modules/home";
+import ConnectWallet from "./modules/connect-wallet";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">HELLO WORLD</header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/connect-wallet" element={<ConnectWallet />}></Route>
+
+        <Route path="/" element={<HOME />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

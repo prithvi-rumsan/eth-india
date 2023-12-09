@@ -1,0 +1,30 @@
+.custom-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.end {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.formInput {
+  padding-top: 20px;
+}
+
+.customTable {
+  margin-bottom: 0px !important;
+}
