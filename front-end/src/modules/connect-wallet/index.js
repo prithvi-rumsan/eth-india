@@ -1,10 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-import "./connect-wallet.css";
 import Card from "../../components/card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import "./connect-wallet.css";
 
 function ConnectWallet() {
   const handleConnectWallet = () => {
@@ -12,16 +10,20 @@ function ConnectWallet() {
   };
   return (
     <Container className="full-center">
-      <Card>
-        <div className="title-container">
-          Connect To Metamask
-          <div className="image-container">
-            <Image src="/metamask.png" fluid />
+      <div className="card-container">
+        <Card>
+          <div className="title-container">
+            Connect To Metamask
+            <div className="image-container">
+              <Image src="/metamask.png" fluid />
+            </div>
           </div>
-        </div>
-        <br />
-        <Button onClick={handleConnectWallet}>Connect</Button>
-      </Card>
+          <br />
+          <div className="button-container">
+            <Button onClick={handleConnectWallet}>Connect</Button>
+          </div>
+        </Card>
+      </div>
     </Container>
   );
 }

@@ -112,7 +112,7 @@ function HOME() {
                   <td>{el.name}</td>
                   <td className="center">
                     <Button variant="light" onClick={handleViewStatus(el.name)}>
-                      Voting Start
+                      Details
                     </Button>
                   </td>
                 </tr>

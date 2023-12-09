@@ -28,6 +28,22 @@
   text-align: center;
 }
 
+.button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.button-container button {
+  width: 100%;
+}
+
+.card-container {
+  width: "80%";
+}
+
 .connect-container {
   align-self: center;
   width: 50%;
