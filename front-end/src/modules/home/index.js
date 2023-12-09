@@ -45,7 +45,7 @@ function HOME() {
   }, [proposalName]);
 
   return (
-    <Container>
+    <Container className="homeContainer">
       <Card>
         <Row>
           <Col md={4} xs={4} className="start">
