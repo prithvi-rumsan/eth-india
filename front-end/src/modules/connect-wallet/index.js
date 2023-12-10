@@ -52,9 +52,9 @@ function ConnectWallet() {
           <Button onClick={connectMetaMask} style={{ marginBottom: "10px" }}>
             Connect
           </Button>
-          <Button onClick={disconnectWallet} variant="danger">
+          {/* <Button onClick={disconnectWallet} variant="danger">
             Disconnect
-          </Button>
+          </Button> */}
         </Card>
       </div>
     </Container>

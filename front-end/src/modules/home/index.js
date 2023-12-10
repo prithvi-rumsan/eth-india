@@ -8,15 +8,16 @@ import { useCallback, useEffect, useState } from "react";
 import Card from "../../components/card";
 import Table from "react-bootstrap/Table";
 import { injected } from "../../utils/wallet";
-
+import Web3 from "web3";
 import Contract from "../../contract/abi/simpleDAO.json";
 import { useWeb3React } from "@web3-react/core";
 import { makeContract } from "../../utils/contract";
+import { sendNotification } from "../../utils/notification";
+import { CONTRACT_ADDRESS } from "../../constants/blockchainConstants";
 const mockProposals = [
-  { name: "proposal 1", status: 10 },
-  { name: "proposal 2", status: 20 },
-  { name: "proposal 3", status: 30 },
-  { name: "proposal 4", status: 40 },
+  { name: "DEFI Proposal", status: 13 },
+  { name: "NFT Proposal", status: 20 },
+  { name: "Open Identity Proposal", status: 3 },
 ];
 
 function HOME() {
@@ -31,7 +32,7 @@ function HOME() {
 
     try {
       //change the contract address
-      const contract = makeContract(library, Contract, "0x5FbDB2315678afecb367f032d93F642f64180aa3");
+      const contract = makeContract(library, Contract, CONTRACT_ADDRESS.dao);
       setContract(contract);
       //can use the contract state variable to call the contract functions
       console.log("contract", contract);
@@ -50,14 +51,22 @@ function HOME() {
   const handleVotingEnd = () => {
     console.log("VOTING END");
   };
-  const handleProposalFormSubmit = (e) => {
+  const handleProposalFormSubmit = async (e) => {
     e.preventDefault();
     console.log("FORM SUBMIT HANDLE");
+    let tx1 = await contract.methods.owner().call()
+    console.log(tx1)
     console.log(proposalName);
     const payload = {
       name: proposalName,
     };
     setProposalList((prev) => [...prev, payload]);
+    let tx = await contract.methods
+      .submitProposal(`${proposalName}`)
+      .send({ from: account, gas: 1000000 })
+    console.log(tx)
+    await sendNotification({ title: 'Proposal submitted', body: proposalName, receiver: tx1 })
+
   };
   const handleViewStatus = (proposalName) => {
     console.log("VIEW DETAILS OF PROPOSAL", proposalName);
@@ -77,7 +86,7 @@ function HOME() {
       activate(injected);
       console.log({ account })
     }
-  }, [activate])
+  }, [activate, account])
 
   return (
     <Container className="homeContainer">
